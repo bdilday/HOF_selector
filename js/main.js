@@ -1,4 +1,10 @@
+/**
+Copyright (c) 2014, Ben Dilday
+bepd50 at gmail dot com
+**/
+
 // globals
+
 var xScale, yScale;
 var xAxis = 'WAR', yAxis = 'wa3';
 var fdata;
