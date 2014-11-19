@@ -6,7 +6,7 @@ bepd50 at gmail dot com
 // globals
 
 var xScale, yScale;
-var xAxis = 'WAR', yAxis = 'wa3';
+var xAxis = 'fWar', yAxis = 'rwa3';
 var fdata;
 var rdata;
 var minyear ;//= 1851;
@@ -16,7 +16,8 @@ var nplayer;// = 50;
 var oset = 0;
 var descriptions;
 var inp_yrType = 'playing';
-var yearSelKeys = {"playing":"year_id", "birth":"year_birth"};
+//var yearSelKeys = {"playing":"year_id", "birth":"year_birth"};
+var yearSelKeys = {"playing":"minyr", "birth":"birthYear"};
 var bounds;
 
 //// RENDERING FUNCTIONS
@@ -175,12 +176,22 @@ function makeYAxis(s) {
 }
 
 function updateMenus() {
-    d3.select('#x-axis-menu')
+    d3.select('#x-axis-menu-l')
 	.selectAll('li')
 	.classed('selected', function(d) {
 	    return d === xAxis;
 	});
-    d3.select('#y-axis-menu')
+    d3.select('#x-axis-menu-r')
+	.selectAll('li')
+	.classed('selected', function(d) {
+	    return d === xAxis;
+	});
+    d3.select('#y-axis-menu-l')
+	.selectAll('li')
+	.classed('selected', function(d) {
+	    return d === yAxis;
+	});
+    d3.select('#y-axis-menu-r')
 	.selectAll('li')
 	.classed('selected', function(d) {
 	    return d === yAxis;
@@ -226,6 +237,7 @@ function filterData(data, minyear, maxyear, filtType) {
 function getBounds(d, paddingFactor) {
     // Find min and maxes (for the scales)
     paddingFactor = typeof paddingFactor !== 'undefined' ? paddingFactor : 1;
+    
     
     var keys = _.keys(d[0]), b = {};
     _.each(keys, function(k) {
@@ -479,43 +491,58 @@ function drawSlopey(slope, oset) {
 function main() {
     d3.csv('data/HOF_metrics.csv', function(data) {
 	
-	var xAxisOptions = ["WAR", "pWAA"
-			    ,"wa2"
-			    ,"wa3"
-			    ,"wa4"
-			    ,"wa5" 
-//			    ,"wa6"
-			    ,"wa7"
-			    ,"wa8"
+	var xAxisOptions = ["fWar"
+			    ,"fwa2"
+			    ,"fwa3"
+			    ,"fwa4"
+			    ,"fwa5"
+			    ,"fwa7"
+			    ,"rWar"
+			    ,"rwa2"
+			    ,"rwa3"
+			    ,"rwa4"
+			    ,"rwa5"
+			    ,"rwa7"
+			    ,"hofmon"
+			    ,"hofstd"
+			    ,"poz100"
+			   ];
+
+	var yAxisOptions = ["fWar"
+			    ,"fwa2"
+			    ,"fwa3"
+			    ,"fwa4"
+			    ,"fwa5"
+			    ,"fwa7"
+			    ,"rWar"
+			    ,"rwa2"
+			    ,"rwa3"
+			    ,"rwa4"
+			    ,"rwa5"
+			    ,"rwa7"
 			    ,"hofmon"
 			    ,"hofstd"
 			    ,"poz100"
 			   ];
 	
-	var yAxisOptions = ["WAR"
-			    ,"pWAA"
-			    ,"wa2"
-			    ,"wa3"
-			    ,"wa4"
-			    ,"wa5"
-//			    ,"wa6"
-			    ,"wa7"
-			    ,"wa8"
-			    ,"hofmon"
-			    ,"hofstd"
-			    ,"poz100"
-			   ];
 	
 	descriptions = {
-	    "WAR" : "Career WAR"
-	    ,"pWAA" : "Career non-negative WAA"
-	    ,"wa2" : "Career non-negative WA2"
-	    ,"wa3" : "Career non-negative WA3"
-	    ,"wa4" : "Career non-negative WA4"
-	    ,"wa5" : "Career non-negative WA5"
-	    ,"wa6" : "Career non-negative WA6"
-	    ,"wa7" : "Career non-negative WA7"
-	    ,"wa8" : "Career non-negative WA8"
+	    "rWar" : "Career rWAR"
+	    ,"fWar" : "Career fWAR"
+	    ,"fwa2" : "Career non-negative fWA2"
+	    ,"fwa3" : "Career non-negative fWA3"
+	    ,"fwa4" : "Career non-negative fWA4"
+	    ,"fwa5" : "Career non-negative fWA5"
+	    ,"fwa6" : "Career non-negative fWA6"
+	    ,"fwa7" : "Career non-negative fWA7"
+	    ,"fwa8" : "Career non-negative fWA8"
+	    ,"rwa2" : "Career non-negative rWA2"
+	    ,"rwa3" : "Career non-negative rWA3"
+	    ,"rwa4" : "Career non-negative rWA4"
+	    ,"rwa5" : "Career non-negative rWA5"
+	    ,"rwa6" : "Career non-negative rWA6"
+	    ,"rwa7" : "Career non-negative rWA7"
+	    ,"rwa8" : "Career non-negative rWA8"
 	    ,"hofmon" : "Bill James HOF monitor"
 	    ,"hofstd" : "Bill James HOF standards"
 	};
@@ -548,7 +575,7 @@ function main() {
 	    .attr('transform', 'translate(80, -60)');
 	
 	// Build menus
-	d3.select('#x-axis-menu')
+	d3.select('#x-axis-menu-l')
 	    .selectAll('li')
 	    .data(xAxisOptions)
 	    .enter()
@@ -563,7 +590,7 @@ function main() {
 		updateMenus();
 	    });
 	
-	d3.select('#y-axis-menu')
+	d3.select('#y-axis-menu-l')
 	    .selectAll('li')
 	    .data(yAxisOptions)
 	    .enter()
@@ -617,12 +644,20 @@ function main() {
 	    .enter()
 	    .append('circle')
 	    .attr('cx', function(d) {
-		return isNaN(d[xAxis]) ? d3.select(this).attr('cx') : xScale(d[xAxis]);
+		return isNaN(d[xAxis]) ? 
+		    d3.select(this).attr('cx') : 
+		    xScale(d[xAxis]);
 	    })
 	    .attr('cy', function(d) {
-		return isNaN(d[yAxis]) ? d3.select(this).attr('cy') : yScale(d[yAxis]);
+		return isNaN(d[yAxis]) ? 
+		    d3.select(this).attr('cy') : 
+		    yScale(d[yAxis]);
 	    })
-	    .attr('fill', function(d, i) {return d["ithisyear"]==1 ? "#FFFF66" : pointColour[d["ibat"]];})
+	    .attr('fill', function(d, i) {
+		return d["ithisyear"]==1 ? 
+		    "#FFFF66" : 
+		    pointColour[d["ibat"]]
+		;})
 
 	    .style('cursor', 'pointer')
 	    .on('mouseover', function(d) {

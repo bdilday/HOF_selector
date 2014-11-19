@@ -48,17 +48,31 @@ body {
   width: 300px;
 }
 
-#menul {
+#menull {
   position: absolute;
   top: 65px;
   left: 30px;
   width: 30px;
 }
 
-#menur {
+#menulr {
   position: absolute;
   top: 65px;
-  left: 130px;
+  left: 70px;
+  width: 30px;
+}
+
+#menurl {
+  position: absolute;
+  top: 65px;
+  left: 90px;
+  width: 30px;
+}
+
+#menurr {
+  position: absolute;
+  top: 65px;
+  left: 170px;
   width: 30px;
 }
 
@@ -70,11 +84,19 @@ body {
   height: 30px;
 }
 
+#txt-input2 {
+  position: absolute;
+  top: 65px;
+  left: 140px;
+  width: 20px;
+  height: 30px;
+}
+
 #radio1 {
   position: absolute;
-  top: 440px;
-  left: 90px;
-  width: 60px;
+  top: 235px;
+  left: 140px;
+  width: 70px;
   height: 30px;
   font-size: 11px;
 }
@@ -82,7 +104,7 @@ body {
 #playerList {
   list-style: none;
   position: absolute;
-  top: 500px;
+  top: 400px;
   left: 30px;
   width: 120px;
   background-color: #fff;
@@ -93,7 +115,7 @@ body {
 #playerListClose {
   list-style: none;
   position: absolute;
-  top: 500px;
+  top: 400px;
   left: 150px;
   width: 120px;
   background-color: #fff;
@@ -101,13 +123,7 @@ body {
   padding-top: 2px;
 }
 
-#txt-input2 {
-  position: absolute;
-  top: 265px;
-  left: 90px;
-  width: 30px;
-  height: 30px;
-}
+
 
 li, h1, h2 {
   font-weight: 100;
