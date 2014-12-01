@@ -497,16 +497,23 @@ function main() {
 			    ,"fwa4"
 			    ,"fwa5"
 			    ,"fwa7"
+			    ,"fwb3"
+			    ,"fwb5"
+			    ,"fwb7"			   
 			    ,"rWar"
 			    ,"rwa2"
 			    ,"rwa3"
 			    ,"rwa4"
 			    ,"rwa5"
 			    ,"rwa7"
+			    ,"rwb3"
+			    ,"rwb5"
+			    ,"rwb7"
 			    ,"hofmon"
 			    ,"hofstd"
 			    ,"poz100"
 			   ];
+
 
 	var yAxisOptions = ["fWar"
 			    ,"fwa2"
@@ -514,12 +521,18 @@ function main() {
 			    ,"fwa4"
 			    ,"fwa5"
 			    ,"fwa7"
+			    ,"fwb3"
+			    ,"fwb5"
+			    ,"fwb7"			   
 			    ,"rWar"
 			    ,"rwa2"
 			    ,"rwa3"
 			    ,"rwa4"
 			    ,"rwa5"
 			    ,"rwa7"
+			    ,"rwb3"
+			    ,"rwb5"
+			    ,"rwb7"
 			    ,"hofmon"
 			    ,"hofstd"
 			    ,"poz100"
@@ -656,7 +669,7 @@ function main() {
 	    .attr('fill', function(d, i) {
 		return d["ithisyear"]==1 ? 
 		    "#FFFF66" : 
-		    pointColour[d["ibat"]]
+		    (d["ithisyear"]==2 ? "#66FF00" : pointColour[d["ibat"]])
 		;})
 
 	    .style('cursor', 'pointer')
