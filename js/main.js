@@ -619,6 +619,10 @@ function main() {
 
 	    ,"hofmon" : "Bill James HOF monitor"
 	    ,"hofstd" : "Bill James HOF standards"
+
+	    ,"fDoom" : "a weighted fWAR"
+	    ,"rDoom" : "a weighted rWAR"
+
 	};
 	
 
