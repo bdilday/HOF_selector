@@ -491,7 +491,7 @@ function drawSlopey(slope, oset) {
 function main() {
     d3.csv('data/HOF_metrics.csv', function(data) {
 	
-	var xAxisOptions = ["fWar"
+	var xAxisOptionsL = ["fWar"
 			    ,"fwa2"
 			    ,"fwa3"
 			    ,"fwa4"
@@ -500,7 +500,7 @@ function main() {
 			    ,"fwb3"
 			    ,"fwb5"
 			    ,"fwb7"			   
-			    ,"rWar"
+/**			    ,"rWar"
 			    ,"rwa2"
 			    ,"rwa3"
 			    ,"rwa4"
@@ -509,13 +509,14 @@ function main() {
 			    ,"rwb3"
 			    ,"rwb5"
 			    ,"rwb7"
+**/
 			    ,"hofmon"
 			    ,"hofstd"
 			    ,"poz100"
 			   ];
 
-
-	var yAxisOptions = ["fWar"
+	var xAxisOptionsR = [
+	    /** "fWar"
 			    ,"fwa2"
 			    ,"fwa3"
 			    ,"fwa4"
@@ -524,6 +525,7 @@ function main() {
 			    ,"fwb3"
 			    ,"fwb5"
 			    ,"fwb7"			   
+	    **/
 			    ,"rWar"
 			    ,"rwa2"
 			    ,"rwa3"
@@ -533,9 +535,56 @@ function main() {
 			    ,"rwb3"
 			    ,"rwb5"
 			    ,"rwb7"
+
+			   ];
+
+
+	var yAxisOptionsL = ["fWar"
+			    ,"fwa2"
+			    ,"fwa3"
+			    ,"fwa4"
+			    ,"fwa5"
+			    ,"fwa7"
+			    ,"fwb3"
+			    ,"fwb5"
+			    ,"fwb7"			   
+/**
+			    ,"rWar"
+			    ,"rwa2"
+			    ,"rwa3"
+			    ,"rwa4"
+			    ,"rwa5"
+			    ,"rwa7"
+			    ,"rwb3"
+			    ,"rwb5"
+			    ,"rwb7"
+**/
 			    ,"hofmon"
 			    ,"hofstd"
 			    ,"poz100"
+			   ];
+
+	var yAxisOptionsR = [
+/** "fWar"
+			    ,"fwa2"
+			    ,"fwa3"
+			    ,"fwa4"
+			    ,"fwa5"
+			    ,"fwa7"
+			    ,"fwb3"
+			    ,"fwb5"
+			    ,"fwb7"			   
+**/
+			    ,"rWar"
+			    ,"rwa2"
+			    ,"rwa3"
+			    ,"rwa4"
+			    ,"rwa5"
+			    ,"rwa7"
+			    ,"rwb3"
+			    ,"rwb5"
+			    ,"rwb7"
+
 			   ];
 	
 	
@@ -556,6 +605,15 @@ function main() {
 	    ,"rwa6" : "Career non-negative rWA6"
 	    ,"rwa7" : "Career non-negative rWA7"
 	    ,"rwa8" : "Career non-negative rWA8"
+
+	    ,"rwb3" : "Best 3 year rWar"
+	    ,"rwb5" : "Best 5 year rWar"
+	    ,"rwb7" : "Best 7 year rWar"
+
+	    ,"fwb3" : "Best 3 year fWar"
+	    ,"fwb5" : "Best 5 year fWar"
+	    ,"fwb7" : "Best 7 year fWar"
+
 	    ,"hofmon" : "Bill James HOF monitor"
 	    ,"hofstd" : "Bill James HOF standards"
 	};
@@ -590,7 +648,22 @@ function main() {
 	// Build menus
 	d3.select('#x-axis-menu-l')
 	    .selectAll('li')
-	    .data(xAxisOptions)
+	    .data(xAxisOptionsL)
+	    .enter()
+	    .append('li')
+	    .text(function(d) {return d;})
+	    .classed('selected', function(d) {
+		return d === xAxis;
+	    })
+	    .on('click', function(d) {
+		xAxis = d;
+		updateChart(false, bounds);
+		updateMenus();
+	    });
+
+	d3.select('#x-axis-menu-r')
+	    .selectAll('li')
+	    .data(xAxisOptionsR)
 	    .enter()
 	    .append('li')
 	    .text(function(d) {return d;})
@@ -605,7 +678,22 @@ function main() {
 	
 	d3.select('#y-axis-menu-l')
 	    .selectAll('li')
-	    .data(yAxisOptions)
+	    .data(yAxisOptionsL)
+	    .enter()
+	    .append('li')
+	    .text(function(d) {return d;})
+	    .classed('selected', function(d) {
+		return d === yAxis;
+	    })
+	    .on('click', function(d) {
+		yAxis = d;
+		updateChart(false, bounds);
+		updateMenus();
+	    });
+
+	d3.select('#y-axis-menu-r')
+	    .selectAll('li')
+	    .data(yAxisOptionsR)
 	    .enter()
 	    .append('li')
 	    .text(function(d) {return d;})

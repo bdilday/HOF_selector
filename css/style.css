@@ -51,14 +51,14 @@ body {
 #menull {
   position: absolute;
   top: 65px;
-  left: 30px;
+  left: 10px;
   width: 30px;
 }
 
 #menulr {
   position: absolute;
-  top: 65px;
-  left: 70px;
+  top: 85px;
+  left: 50px;
   width: 30px;
 }
 
@@ -71,8 +71,8 @@ body {
 
 #menurr {
   position: absolute;
-  top: 65px;
-  left: 170px;
+  top: 85px;
+  left: 130px;
   width: 30px;
 }
 
@@ -87,15 +87,15 @@ body {
 #txt-input2 {
   position: absolute;
   top: 65px;
-  left: 140px;
-  width: 20px;
+  left: 180px;
+  width: 10px;
   height: 30px;
 }
 
 #radio1 {
   position: absolute;
   top: 235px;
-  left: 140px;
+  left: 180px;
   width: 70px;
   height: 30px;
   font-size: 11px;
@@ -104,8 +104,8 @@ body {
 #playerList {
   list-style: none;
   position: absolute;
-  top: 400px;
-  left: 30px;
+  top: 340px;
+  left: 20px;
   width: 120px;
   background-color: #fff;
   padding-bottom: 50px;
@@ -115,8 +115,8 @@ body {
 #playerListClose {
   list-style: none;
   position: absolute;
-  top: 400px;
-  left: 150px;
+  top: 340px;
+  left: 140px;
   width: 120px;
   background-color: #fff;
   padding-bottom: 50px;
