@@ -492,14 +492,15 @@ function main() {
     d3.csv('data/HOF_metrics.csv', function(data) {
 	
 	var xAxisOptionsL = ["fWar"
-			    ,"fwa2"
-			    ,"fwa3"
-			    ,"fwa4"
-			    ,"fwa5"
-			    ,"fwa7"
-			    ,"fwb3"
-			    ,"fwb5"
-			    ,"fwb7"			   
+			     ,"fwa2"
+			     ,"fwa3"
+			     ,"fwa4"
+			     ,"fwa5"
+			     ,"fwa7"
+			     ,"fwb3"
+			     ,"fwb5"
+			     ,"fwb7"			   
+			     ,"fDoom"
 /**			    ,"rWar"
 			    ,"rwa2"
 			    ,"rwa3"
@@ -535,6 +536,7 @@ function main() {
 			    ,"rwb3"
 			    ,"rwb5"
 			    ,"rwb7"
+	    ,"rDoom"
 
 			   ];
 
@@ -548,6 +550,7 @@ function main() {
 			    ,"fwb3"
 			    ,"fwb5"
 			    ,"fwb7"			   
+			     ,"fDoom"
 /**
 			    ,"rWar"
 			    ,"rwa2"
@@ -584,7 +587,7 @@ function main() {
 			    ,"rwb3"
 			    ,"rwb5"
 			    ,"rwb7"
-
+	    ,"rDoom"
 			   ];
 	
 	
